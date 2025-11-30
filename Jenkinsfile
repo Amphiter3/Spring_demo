@@ -1,10 +1,9 @@
 pipeline {
-    agent any
-
-    environment {
-        // Optional: set Java home if your Jenkins container has multiple JDKs
-        JAVA_HOME = "/usr/lib/jvm/java-8-openjdk"
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+    agent {
+        docker {
+            image 'maven:3.9.4-eclipse-temurin-17'
+            args '-u root:root'
+        }
     }
 
     stages {
